@@ -1,0 +1,29 @@
+<div class="text-center">
+  <h1>Enroll a student in a course</h1>
+
+  <% if @student.errors.any? %>
+    <% @student.errors.full_messages.each do |err|%>
+      <p class="text-danger"><%= err%></p>
+    <% end %>
+  <% end %>
+
+<input type="checkbox" id="puppy_gooddog" name="puppy[gooddog]" value="yes" />
+
+<ul>
+<% Course.each do |course| %>
+  <li><%= course.name %>
+<% end %>
+</ul>
+
+  <%= form_for(@student, url: student_path(@student.id), method: "patch") do |f|%>
+
+  <p>
+    <%= f.label(:course)%>
+    <%= f.text_field(:name, autofocus: true)%>
+  </p>
+
+    <%= f.submit("Add", class: "btn btn-primary ")%>
+  <% end %>
+  <br>
+  <%= link_to "See students", students_path %>
+  </div>

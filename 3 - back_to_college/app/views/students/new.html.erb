@@ -1,0 +1,23 @@
+<div class="text-center">
+  <h1>Add a new student</h1>
+
+<% if @student.errors.any? %>
+  <% @student.errors.full_messages.each do |err|%>
+    <p class="text-danger"><%= err%></p>
+  <% end %>
+<% end %>
+
+  <%= form_for(@student, url: students_path) do |f|%>
+
+  <p>
+    <%= f.label(:name)%>
+    <%= f.text_field(:name, autofocus: true)%>
+  </p>
+
+    <%= f.submit("Add", class: "btn btn-primary ")%>
+  <% end %>
+
+  <br>
+  <%= link_to "See students", students_path %>
+  <br>
+</div>
